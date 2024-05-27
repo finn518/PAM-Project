@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 
 class Home : AppCompatActivity() {
     private lateinit var rvTrending: RecyclerView
@@ -31,6 +32,8 @@ class Home : AppCompatActivity() {
     private lateinit var addBtn: TextView
     private lateinit var sc:ScrollView
     private lateinit var formAdd : LinearLayout
+    private var auth: FirebaseAuth? = null
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +63,7 @@ class Home : AppCompatActivity() {
         formAdd = findViewById(R.id.formAdd)
         addBtn = findViewById(R.id.add)
         upImage = findViewById(R.id.uploadImg)
+        auth = FirebaseAuth.getInstance()
 
 
         rvTrending.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
@@ -85,11 +89,19 @@ class Home : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val keluar: ImageButton = findViewById(R.id.logout)
+        keluar.setOnClickListener(){
+            logOut()
+        }
 
+    }
 
-
-
-
-
+    fun logOut() {
+        auth!!.signOut()
+        val intent = Intent(this@Home,
+            MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 }
