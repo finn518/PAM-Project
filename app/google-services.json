@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "611119653840",
+    "project_id": "projectpam-107dc",
+    "storage_bucket": "projectpam-107dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611119653840:android:241e15da8708c6abe30fd5",
+        "android_client_info": {
+          "package_name": "com.example.lastpam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJjwvzwi5Ovpe7Uv8Zr2cyI0ScrWOdZPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
