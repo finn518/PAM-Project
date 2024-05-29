@@ -25,15 +25,17 @@
                 android:background="@color/white"
                 android:scaleType="centerInside"
                 android:src="@drawable/satu" />
+
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/movieTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Avangers: EndGame"
+            android:textAlignment="center"
             android:textSize="20sp" />
 
     </LinearLayout>

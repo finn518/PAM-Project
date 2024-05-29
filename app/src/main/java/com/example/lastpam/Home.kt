@@ -8,84 +8,139 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.ScrollView
 import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class Home : AppCompatActivity() {
     private lateinit var rvTrending: RecyclerView
-    private lateinit var new: RecyclerView
-    private lateinit var top: RecyclerView
-    private lateinit var adapter: MovieAdapter
-    private lateinit var newsAdapter: HeroAdapter
-    private lateinit var news: RecyclerView
-    private lateinit var upImage: ImageButton
-    private lateinit var upTitle: EditText
-    private lateinit var upDesc: EditText
-    private lateinit var upGenre: EditText
-    private lateinit var upDate: EditText
-    private lateinit var upKategori: EditText
+    private lateinit var rvPlaying: RecyclerView
+    private lateinit var rvUpcoming: RecyclerView
+    private lateinit var trendingAdapter: MovieAdapter
+    private lateinit var playingAdapter: MovieAdapter
+    private lateinit var upcomingAdapter: MovieAdapter
     private lateinit var addBtn: TextView
-    private lateinit var sc:ScrollView
-    private lateinit var formAdd : LinearLayout
     private var auth: FirebaseAuth? = null
+    private var dataTrending: MutableList<Movies> = mutableListOf()
+    private var dataUpcoming: MutableList<Movies> = mutableListOf()
+    private var dataPlaying: MutableList<Movies> = mutableListOf()
+    private var firebaseDatabase: FirebaseDatabase? = null
+    private var databaseReference: DatabaseReference? = null
+    private lateinit var dbTrending: DatabaseReference
+    private lateinit var dbPlaying: DatabaseReference
+    private lateinit var dbUpcoming: DatabaseReference
+    private lateinit var Mdb: DatabaseReference
+    private var nickName: TextView? = null
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
-        val data = listOf(
-            Movies("EndGame", R.drawable.satu),
-            Movies("Age Of Ultron", R.drawable.dua),
-            Movies("Infinity War", R.drawable.tiga),
-            Movies("CivilWar", R.drawable.empat)
-        )
-
-        var news1 = listOf(
-            Movies("EndGame", R.drawable.news1),
-            Movies("Age Of Ultron", R.drawable.news2),
-            Movies("Infinity War", R.drawable.news3),
-            Movies("CivilWar", R.drawable.news3)
-        )
-
+        nickName = findViewById(R.id.userName)
         rvTrending = findViewById(R.id.rvTrending)
-        top = findViewById(R.id.rvUpcoming)
-        new = findViewById(R.id.rvPlay)
-        news = findViewById(R.id.rvNews)
-        upImage = findViewById(R.id.uploadImg)
-        sc = findViewById(R.id.sc)
-        formAdd = findViewById(R.id.formAdd)
+        rvPlaying = findViewById(R.id.rvPlay)
+        rvUpcoming = findViewById(R.id.rvUpcoming)
         addBtn = findViewById(R.id.add)
-        upImage = findViewById(R.id.uploadImg)
         auth = FirebaseAuth.getInstance()
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        databaseReference = firebaseDatabase!!.reference
+        dbTrending = FirebaseDatabase.getInstance("https://projectpam-107dc-default-rtdb.asia-southeast1.firebasedatabase.app/")
+            .getReference("trending")
+        dbPlaying = FirebaseDatabase.getInstance("https://projectpam-107dc-default-rtdb.asia-southeast1.firebasedatabase.app/")
+            .getReference("playing")
+        dbUpcoming = FirebaseDatabase.getInstance("https://projectpam-107dc-default-rtdb.asia-southeast1.firebasedatabase.app/")
+            .getReference("upcoming")
 
+        dbTrending.addValueEventListener(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                dataTrending.clear()
+                for(moviesnapshot in snapshot.children){
+                    val movie = moviesnapshot.getValue(Movies::class.java)
+                    movie?.id = moviesnapshot.key
+                    if (movie !== null){
+                        dataTrending.add(movie)
+                    }
+                }
+                trendingAdapter.notifyDataSetChanged()
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@Home, "Tidak bisa mendapatkan data", Toast.LENGTH_SHORT).show()
+            }
+        })
 
-        rvTrending.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-        rvTrending.adapter = MovieAdapter(this,data)
-        top.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-        top.adapter = MovieAdapter(this,data)
-        new.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-        new.adapter = MovieAdapter(this,data)
-        rvTrending.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-        rvTrending.adapter = MovieAdapter(this,data)
+        dbPlaying.addValueEventListener(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                dataPlaying.clear()
+                for(moviesnapshot in snapshot.children){
+                    val movie = moviesnapshot.getValue(Movies::class.java)
+                    movie?.id = moviesnapshot.key
+                    if (movie !== null){
+                        dataPlaying.add(movie)
+                    }
+                }
+                playingAdapter.notifyDataSetChanged()
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@Home, "Tidak bisa mendapatkan data", Toast.LENGTH_SHORT).show()
+            }
+        })
 
-        news.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-        news.adapter = HeroAdapter(this,news1)
+        dbUpcoming.addValueEventListener(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                dataUpcoming.clear()
+                for(moviesnapshot in snapshot.children){
+                    val movie = moviesnapshot.getValue(Movies::class.java)
+                    movie?.id = moviesnapshot.key
+                    if (movie !== null){
+                        dataUpcoming.add(movie)
+                    }
+                }
+                upcomingAdapter.notifyDataSetChanged()
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@Home, "Tidak bisa mendapatkan data", Toast.LENGTH_SHORT).show()
+            }
+        })
 
-        addBtn.setOnClickListener(){
-            sc.visibility = View.GONE
-            formAdd.visibility = View.VISIBLE
+        val userId = auth!!.currentUser?.uid
+        if (userId != null) {
+            val ref = FirebaseDatabase.getInstance("https://projectpam-107dc-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("admins").child(userId)
+
+            ref.child("name").addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val name = snapshot.getValue(String::class.java)
+                    nickName?.text = name
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@Home, "Cannot retrieve name", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
 
-        upImage.setOnClickListener(){
-            val intent: Intent = Intent(Intent.ACTION_PICK)
-            intent.setType("image/*")
+        rvTrending.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        trendingAdapter = MovieAdapter(this,dataTrending)
+        rvTrending.adapter = trendingAdapter
+        rvPlaying.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        playingAdapter = MovieAdapter(this,dataPlaying)
+        rvPlaying.adapter = playingAdapter
+        rvUpcoming.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        upcomingAdapter = MovieAdapter(this,dataUpcoming)
+        rvUpcoming.adapter = upcomingAdapter
+
+
+        addBtn.setOnClickListener(){
+            val intent: Intent = Intent(this, UploadActivity::class.java)
             startActivity(intent)
         }
 
@@ -93,7 +148,6 @@ class Home : AppCompatActivity() {
         keluar.setOnClickListener(){
             logOut()
         }
-
     }
 
     fun logOut() {

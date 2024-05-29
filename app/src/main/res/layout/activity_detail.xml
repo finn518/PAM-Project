@@ -4,4 +4,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Detail"/>
+    tools:context=".Detail">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/detailImg"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="true"
+        android:elevation="20dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/circular"
+        app:srcCompat="@drawable/empat"
+
+        />
+
+    <TextView
+        android:id="@+id/detailDesc"
+        android:layout_width="332dp"
+        android:layout_height="193dp"
+        android:layout_marginTop="624dp"
+        android:fontFamily="@font/poppins"
+        android:text="Deskripsi"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="556dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Tanggal Tayang"
+        android:textColor="#BF333333"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/detailTayang"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginTop="576dp"
+        android:fontFamily="@font/poppins_medium_italic"
+        android:paddingTop="5sp"
+        android:text="Tanggal"
+        android:textColor="#BF404040"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/detailTitle"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Judul Film"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailImg" />
+
+    <TextView
+        android:id="@+id/detailGenre"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="512dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:text="Genre Film"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.915"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu_icon="@drawable/list"
+        app:menu_fab_size="normal"
+        app:menu_openDirection="up"
+        app:menu_showShadow="true"
+        app:menu_colorPressed="@color/base"
+        app:menu_colorNormal="@color/base">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/editBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_edit_24"
+            app:fabSize="mini"
+            app:fab_colorNormal="@color/secondary"
+            app:fab_showShadow="true">
+
+        </com.github.clans.fab.FloatingActionButton>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_delete_24"
+            app:fab_colorNormal="@color/secondary"
+            app:fabSize="mini"
+            app:fab_showShadow="true">
+
+        </com.github.clans.fab.FloatingActionButton>
+
+    </com.github.clans.fab.FloatingActionMenu>
+</androidx.constraintlayout.widget.ConstraintLayout>

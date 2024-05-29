@@ -131,7 +131,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Popular"
+                android:text="Upcoming"
                 android:textColor="@color/base"
                 android:textSize="20sp" />
 
@@ -142,101 +142,4 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/formAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@drawable/bginput"
-        android:foregroundGravity="center"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/uploadImg"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/inputimage" />
-
-        <EditText
-            android:id="@+id/uploadTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/input"
-            android:ems="10"
-            android:hint="Judul FIlm"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/uploadDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/input"
-            android:ems="10"
-            android:hint="Deskripsi Film"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/uploadGenre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/input"
-            android:ems="10"
-            android:hint="Genre"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/uploadDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/input"
-            android:ems="10"
-            android:hint="Tanggal Tayang"
-            android:inputType="date" />
-
-        <EditText
-            android:id="@+id/kategori"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/input"
-            android:ems="10"
-            android:hint="Trending/Playing/Upcoming"
-            android:inputType="text" />
-
-        <Button
-            android:id="@+id/uploadBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
-            android:text="Tambah Film"
-            android:textColor="@color/white"
-            app:cornerRadius="10dp" />
-    </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
