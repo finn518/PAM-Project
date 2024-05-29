@@ -8,231 +8,107 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/loginLayout"
+    <TextView
+        android:id="@+id/topLogin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible">
+        android:layout_height="70dp"
+        android:background="@drawable/nav"
+        android:fontFamily="@font/archivo_bold"
+        android:gravity="bottom|center"
+        android:paddingBottom="10sp"
+        android:text="Masuk ke MeowID"
+        android:textColor="@color/base"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/topLogin"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@drawable/nav"
-            android:fontFamily="@font/archivo_bold"
-            android:gravity="bottom|center"
-            android:paddingBottom="10sp"
-            android:text="Masuk ke MeowID"
-            android:textColor="@color/base"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/emailLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="260dp"
+        android:fontFamily="@font/poppins"
+        android:text="Email"
+        android:textColor="@color/base"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topLogin" />
 
-        <TextView
-            android:id="@+id/emailLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="260dp"
-            android:fontFamily="@font/poppins"
-            android:text="Email"
-            android:textColor="@color/base"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/topLogin" />
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="382dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Masukkan Email"
+        android:inputType="text|textEmailAddress"
+        android:paddingBottom="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailLogin" />
 
-        <EditText
-            android:id="@+id/etEmail"
-            android:layout_width="382dp"
-            android:layout_height="48dp"
-            android:ems="10"
-            android:hint="Masukkan Email"
-            android:inputType="text|textEmailAddress"
-            android:paddingBottom="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.481"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emailLogin" />
+    <TextView
+        android:id="@+id/pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="327dp"
+        android:fontFamily="@font/poppins"
+        android:text="Password"
+        android:textColor="@color/base"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
-        <TextView
-            android:id="@+id/pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="327dp"
-            android:fontFamily="@font/poppins"
-            android:text="Password"
-            android:textColor="@color/base"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+    <EditText
+        android:id="@+id/etPass"
+        android:layout_width="382dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Masukan Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
 
-        <EditText
-            android:id="@+id/etPass"
-            android:layout_width="382dp"
-            android:layout_height="48dp"
-            android:ems="10"
-            android:hint="Masukan Password"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pass" />
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="373dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="364dp"
+        android:text="Masuk"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="373dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="364dp"
-            android:text="Masuk"
-            app:cornerRadius="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/belumpunyaakun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Belum punya akun?"
+        android:textColor="@color/base"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
-        <TextView
-            android:id="@+id/belumpunyaakun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="Belum punya akun?"
-            android:textColor="@color/base"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDaftar"
+        android:layout_width="373dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/register"
+        android:text="Daftar Sekarang"
+        android:textColor="#635E68"
+        app:cornerRadius="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/belumpunyaakun" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnDaftar"
-            android:layout_width="373dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/register"
-            android:text="Daftar Sekarang"
-            android:textColor="#635E68"
-            app:cornerRadius="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/belumpunyaakun" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/register"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/topDaftar"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@drawable/nav"
-            android:fontFamily="@font/archivo_bold"
-            android:gravity="bottom|center"
-            android:paddingBottom="10sp"
-            android:text="Daftar Mew ID"
-            android:textColor="@color/base"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/nohpDaftar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="260dp"
-            android:fontFamily="@font/poppins"
-            android:text="Email"
-            android:textColor="@color/base"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etNameDaftar" />
-
-        <EditText
-            android:id="@+id/etEmailDaftar"
-            android:layout_width="382dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:hint="Masukkan Email"
-            android:inputType="text|textEmailAddress"
-            android:paddingBottom="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.413"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nohpDaftar" />
-
-        <Button
-            android:id="@+id/btnDaftarBaru"
-            android:layout_width="373dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="364dp"
-            android:text="Daftar Mew ID"
-            app:cornerRadius="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="27dp"
-            android:layout_marginEnd="301dp"
-            android:text="Nama Lengkap"
-            android:textColor="@color/base"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/topDaftar" />
-
-        <EditText
-            android:id="@+id/etNameDaftar"
-            android:layout_width="382dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="17dp"
-            android:ems="10"
-            android:hint="Masukan nama anda"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <TextView
-            android:id="@+id/passDaftar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Password"
-            android:textColor="@color/base"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.045"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEmailDaftar" />
-
-        <EditText
-            android:id="@+id/etPassDaftar"
-            android:layout_width="382dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            android:ems="10"
-            android:hint="Masukkan Password"
-            android:inputType="textPassword"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passDaftar" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

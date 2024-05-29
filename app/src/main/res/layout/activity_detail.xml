@@ -33,12 +33,15 @@
             <TextView
                 android:id="@+id/detailDesc"
                 android:layout_width="332dp"
-                android:layout_height="193dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="624dp"
                 android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:paddingBottom="100dp"
                 android:text="Deskripsi"
                 android:textAlignment="center"
-                android:textSize="20sp"
+                android:textColor="@color/ternary"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +54,7 @@
                 android:layout_marginTop="556dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Tanggal Tayang"
-                android:textColor="#BF333333"
+                android:textColor="@color/ternary"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
@@ -66,7 +69,7 @@
                 android:fontFamily="@font/poppins_medium_italic"
                 android:paddingTop="5sp"
                 android:text="Tanggal"
-                android:textColor="#BF404040"
+                android:textColor="@color/ternary"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
@@ -81,6 +84,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:text="Judul Film"
                 android:textAlignment="center"
+                android:textColor="@color/base"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
@@ -96,6 +100,7 @@
                 android:gravity="center"
                 android:text="Genre Film"
                 android:textAlignment="center"
+                android:textColor="@color/ternary"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
@@ -114,8 +119,8 @@
                 app:menu_fab_size="normal"
                 app:menu_openDirection="up"
                 app:menu_showShadow="true"
-                app:menu_colorPressed="@color/base"
-                app:menu_colorNormal="@color/base">
+                app:menu_colorPressed="@color/ternary"
+                app:menu_colorNormal="@color/ternary">
 
                 <com.github.clans.fab.FloatingActionButton
                     android:id="@+id/editBtn"
@@ -123,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_edit_24"
                     app:fabSize="mini"
-                    app:fab_colorNormal="@color/secondary"
+                    app:fab_colorNormal="@color/ternary"
                     app:fab_showShadow="true" />
 
                 <com.github.clans.fab.FloatingActionButton
@@ -131,8 +136,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_delete_24"
-                    app:fab_colorNormal="@color/secondary"
                     app:fabSize="mini"
+                    app:fab_colorNormal="#F44336"
                     app:fab_showShadow="true" />
 
             </com.github.clans.fab.FloatingActionMenu>

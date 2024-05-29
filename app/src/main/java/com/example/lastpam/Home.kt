@@ -36,9 +36,7 @@ class Home : AppCompatActivity() {
     private lateinit var dbTrending: DatabaseReference
     private lateinit var dbPlaying: DatabaseReference
     private lateinit var dbUpcoming: DatabaseReference
-    private lateinit var Mdb: DatabaseReference
     private var nickName: TextView? = null
-
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
