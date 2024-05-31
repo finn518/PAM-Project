@@ -27,10 +27,13 @@ class Detail : AppCompatActivity() {
     private var updateBtn: FloatingActionButton? = null
     private var key: String? = null
     private var imgUrl:String? = null
+    private var kategori: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
+
 
         detailImg = findViewById(R.id.detailImg)
         detailTitle = findViewById(R.id.detailTitle)
@@ -47,6 +50,7 @@ class Detail : AppCompatActivity() {
             detailDesc?.text = bun.getString("desc")
             detailGenre?.text = bun.getString("genre")
             detailTayang?.text = bun.getString("tayang")
+            kategori = bun.getString("kategori")
             key = bun.getString("key")
             imgUrl = bun.getString("img")
             if (detailImg != null && imgUrl != null) {
@@ -56,33 +60,41 @@ class Detail : AppCompatActivity() {
 
         delBtn?.setOnClickListener {
             val ref: DatabaseReference = FirebaseDatabase.getInstance("https://projectpam-107dc-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("trending")
+                .getReference(kategori!!)
             val storage: FirebaseStorage = FirebaseStorage.getInstance()
 
             if (imgUrl != null && key != null) {
-                Log.d("DetailActivityImg", "imgUrl: $imgUrl")
-                Log.d("DetailActivity", "key: $key")
+                Log.d("DetailActivity", "Attempting to delete item with key: $key in category: $kategori")
+                Log.d("DetailActivityImg", "Image URL: $imgUrl")
 
-                val storageRef: StorageReference = storage.getReferenceFromUrl(imgUrl!!)
+                try {
+                    val storageRef: StorageReference = storage.getReferenceFromUrl(imgUrl!!)
 
-                storageRef.delete().addOnSuccessListener {
-                    Log.d("DetailActivity", "File successfully deleted from storage")
-                    ref.child(key!!).removeValue().addOnSuccessListener {
-                        Toast.makeText(this, "Berhasil dihapus", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(applicationContext, Home::class.java))
-                        finish()
+                    storageRef.delete().addOnSuccessListener {
+                        Log.d("DetailActivity", "File successfully deleted from storage")
+                        ref.child(key!!).removeValue().addOnSuccessListener {
+                            Log.d("DetailActivity", "Item successfully deleted from database")
+                            Toast.makeText(this, "Berhasil dihapus", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(applicationContext, Home::class.java))
+                            finish()
+                        }.addOnFailureListener { e ->
+                            Log.e("DetailActivity", "Error removing data from database", e)
+                            Toast.makeText(this, "Gagal menghapus data dari database", Toast.LENGTH_SHORT).show()
+                        }
                     }.addOnFailureListener { e ->
-                        Log.e("DetailActivity", "Error removing data from database", e)
-                        Toast.makeText(this, "Gagal menghapus data dari database", Toast.LENGTH_SHORT).show()
+                        Log.e("DetailActivity", "Error deleting file from storage", e)
+                        Toast.makeText(this, "Gagal menghapus file dari storage", Toast.LENGTH_SHORT).show()
                     }
-                }.addOnFailureListener { e ->
-                    Log.e("DetailActivity", "Error deleting file from storage", e)
-                    Toast.makeText(this, "Gagal menghapus file dari storage", Toast.LENGTH_SHORT).show()
+                } catch (e: Exception) {
+                    Log.e("DetailActivity", "Exception during storage deletion", e)
+                    Toast.makeText(this, "Terjadi kesalahan saat menghapus file dari storage", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this, "URL atau kunci tidak boleh kosong", Toast.LENGTH_SHORT).show()
             }
         }
+
+
 
         updateBtn?.setOnClickListener(){
             val intent = Intent(this, Update::class.java)
@@ -92,6 +104,7 @@ class Detail : AppCompatActivity() {
                 .putExtra("tayang", detailTayang?.text.toString())
                 .putExtra("img", imgUrl)
                 .putExtra("key", key)
+                .putExtra("kategori", kategori)
             startActivity(intent)
         }
 

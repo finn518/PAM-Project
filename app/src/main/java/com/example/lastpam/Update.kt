@@ -31,6 +31,7 @@ class Update : AppCompatActivity() {
     private var uri: Uri? = null
     private var dbRef: DatabaseReference? = null
     private var stRef: StorageReference? = null
+    private var kategori: String? = null
 
     companion object {
         private const val PICK_IMAGE_REQUEST = 1
@@ -55,6 +56,7 @@ class Update : AppCompatActivity() {
             updateDesc?.setText(bun.getString("desc"))
             updateGenre?.setText(bun.getString("genre"))
             updateTayang?.setText(bun.getString("tayang"))
+            kategori = bun.getString("kategori")
             key = bun.getString("key")
             oldimageUrl = bun.getString("img")
             if (updateImage != null && oldimageUrl != null) {
@@ -63,7 +65,7 @@ class Update : AppCompatActivity() {
         }
 
         dbRef = FirebaseDatabase.getInstance("https://projectpam-107dc-default-rtdb.asia-southeast1.firebasedatabase.app/")
-            .getReference("trending").child(key!!)
+            .getReference(kategori!!).child(key!!)
         updateImage?.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(intent, PICK_IMAGE_REQUEST)

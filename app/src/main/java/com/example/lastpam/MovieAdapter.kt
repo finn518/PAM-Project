@@ -37,6 +37,7 @@ class MovieAdapter(private val context: Context, private val movieData: MutableL
             intent.putExtra("desc", movieData.get(holder.adapterPosition).desc)
             intent.putExtra("tayang", movieData.get(holder.adapterPosition).tayang)
             intent.putExtra("genre", movieData.get(holder.adapterPosition).genre)
+            intent.putExtra("kategori", movieData.get(holder.adapterPosition).kategori)
             context.startActivity(intent)
         }
     }
